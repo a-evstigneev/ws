@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My first page!</title>
+<meta charset="utf-8">
+</head>
+	<body>
+	 	<center><p><a href="/tux.jpg"><h3>Image tux.jpg<h3></a></p></center>
+	 	<center><p><a href="/linux_rukovod_prog.pdf"><h3>Linux руководство программиста</h3></a></p></center>
+		<center><a href="http://localhost:8080/index1.html"><h3>Article about Unix</h3></a></center>
+		<br>
+		<br>
+		<br>
+		<center>
+			
+			<h3>List directory contents</h3>
+			<form method="get" action="http://localhost:8080/cgi-bin/cmd_ls.cgi" name="Command_name">
+				<p><input type="text" name="dir" size="14" value="Input directory path" maxlength="100" onfocus="if (this.value == 'Input directory path') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Input directory path';}">
+				<p><input type="submit" value="Execute">
+			</form>
+			
+			<br>
+			
+			<h3>Output file</h3>
+			<form method="get" action="http://localhost:8080/cgi-bin/cmd_cat.cgi" name="Command_name">
+				<p><input type="text" name="file" size="14" value="Input file path" maxlength="100" onfocus="if (this.value == 'Input file path') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Input file path';}">
+				<p><input type="submit" value="Execute">
+			</form>
+			
+			<br>
+			<br>
+			<br>
+			
+			<form method="post" action="http://localhost:8080/cgi-bin/cmd_cat.cgi" name"Text_area">
+				<textarea name=info rows=10 cols=80 wrap=off></textarea>
+				<p><input type="submit" value="Send">
+			</form>
+		
+		</center>
+	</body>
+</html>

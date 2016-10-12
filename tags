@@ -1,0 +1,113 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BUF_SIZE	cmd_new.c	5;"	d	file:
+DEF_MIME	initconf.h	6;"	d
+GROWMP	keyval.c	/^	GROWMP = 2$/;"	e	enum:__anon5	file:
+GROWMP	servfunc.c	/^	GROWMP = 2,$/;"	e	enum:__anon4	file:
+INITCONF_H	initconf.h	2;"	d
+INITMP	keyval.c	/^	INITMP = 1,$/;"	e	enum:__anon5	file:
+INITMP	servfunc.c	/^	INITMP = 1,$/;"	e	enum:__anon4	file:
+KEYVAL_H	keyval.h	2;"	d
+LEN_DATE	servconn.c	/^	LEN_DATE		= 64,$/;"	e	enum:__anon2	file:
+LEN_FILE_SIZE	servconn.c	/^	LEN_FILE_SIZE 	= 16$/;"	e	enum:__anon2	file:
+LEN_FILE_SIZE	servweb.c	/^	LEN_FILE_SIZE 		= 16$/;"	e	enum:__anon7	file:
+LISTENQ	web_server.c	/^	LISTENQ = 20,$/;"	e	enum:__anon9	file:
+MAXLINE	cmd.c	/^	MAXLINE = 8192	$/;"	e	enum:__anon3	file:
+MAXLINE	initconf.c	/^	MAXLINE = 8192$/;"	e	enum:__anon10	file:
+MAXLINE	readstr.c	/^	MAXLINE = 8192$/;"	e	enum:__anon6	file:
+MAXLINE	servcgi.c	/^	MAXLINE = 8192$/;"	e	enum:__anon8	file:
+MAXLINE	servconn.c	/^	MAXLINE			= 8192,$/;"	e	enum:__anon2	file:
+MAXLINE	servweb.c	/^	MAXLINE				= 8192,$/;"	e	enum:__anon7	file:
+MAXLINE	test_readstr.c	/^	MAXLINE = 8192$/;"	e	enum:__anon1	file:
+MAXSIZE	web_server.c	/^	MAXSIZE = 8192$/;"	e	enum:__anon9	file:
+MAX_LINE_SIZE	servfunc.c	/^	MAX_LINE_SIZE = 2048$/;"	e	enum:__anon4	file:
+MAX_REQUEST_LINE	servweb.c	/^	MAX_REQUEST_LINE	= 8000,$/;"	e	enum:__anon7	file:
+NAME_CONFIG	initconf.h	4;"	d
+PROTOCOL	initconf.h	5;"	d
+READSTR_H	readstr.h	2;"	d
+REQ_CGI	servconn.c	/^	REQ_CGI			= 1,$/;"	e	enum:__anon2	file:
+REQ_ERR	servconn.c	/^	REQ_ERR			= 2,$/;"	e	enum:__anon2	file:
+REQ_SUCC	servconn.c	/^	REQ_SUCC 		= 0,$/;"	e	enum:__anon2	file:
+SERVCGI_H	servcgi.h	2;"	d
+SERVCONN_H	servconn.h	2;"	d
+SERVFUNC_H	servfunc.h	2;"	d
+SERVWEB_H	servweb.h	2;"	d
+TAG_CONNECTION	initconf.h	10;"	d
+TAG_COUNT_RQST	initconf.h	13;"	d
+TAG_ERROR_DIR	initconf.h	8;"	d
+TAG_PORT	initconf.h	9;"	d
+TAG_ROOT_DIR	initconf.h	7;"	d
+TAG_SERVNAME	initconf.h	14;"	d
+TAG_TIME_CGI	initconf.h	12;"	d
+TAG_TIME_CONN	initconf.h	11;"	d
+_GNU_SOURCE	servcgi.c	1;"	d	file:
+_GNU_SOURCE	servconn.c	1;"	d	file:
+add_record	keyval.c	/^add_record(struct set_keyval *ptr, const char *key, const char *val)$/;"	f
+array_size	initconf.h	15;"	d
+check_method	servweb.c	/^check_method(char *ptr)$/;"	f
+clear_request	servweb.c	/^clear_request(struct http_request *req)$/;"	f
+clearstrbuf	readstr.c	/^clearstrbuf(void)$/;"	f
+client_address	web_server.c	/^const char * client_address;$/;"	v
+conf	initconf.c	/^struct set_keyval conf, state, mime;$/;"	v	typeref:struct:set_keyval
+confpath	web_server.c	/^char *confpath;$/;"	v
+defconf	initconf.c	/^struct keyval defconf[] = {$/;"	v	typeref:struct:keyval
+defmime	initconf.c	/^struct keyval defmime[] = {$/;"	v	typeref:struct:keyval
+defstate	initconf.c	/^struct keyval defstate[] = {$/;"	v	typeref:struct:keyval
+element	keyval.h	/^	struct keyval *element;$/;"	m	struct:set_keyval	typeref:struct:set_keyval::keyval
+err_comm_quit	servfunc.c	/^err_comm_quit(const char *str)$/;"	f
+err_sys_quit	servfunc.c	/^err_sys_quit(const char *str)$/;"	f
+exec_response	servconn.c	/^exec_response(int connfd, struct http_request *req)$/;"	f
+exten	servweb.h	/^	char *exten;$/;"	m	struct:request_line
+file_name	servweb.h	/^	char *file_name;$/;"	m	struct:request_line
+file_path	servweb.h	/^	char *file_path;$/;"	m	struct:request_line
+filesize	servweb.c	/^filesize(int resourse, char *ptr, int len)$/;"	f
+get_date	servweb.c	/^get_date(char *ptr, int len) $/;"	f
+get_value	keyval.c	/^get_value(struct set_keyval name, const char *key)$/;"	f
+headers	servweb.h	/^	struct set_keyval headers;$/;"	m	struct:http_request	typeref:struct:http_request::set_keyval
+http_request	servweb.h	/^struct http_request {$/;"	s
+ind_cur	keyval.h	/^	int ind_cur;$/;"	m	struct:set_keyval
+ind_max	keyval.h	/^	int ind_max;$/;"	m	struct:set_keyval
+key	keyval.h	/^	char *key;$/;"	m	struct:keyval
+keyval	keyval.h	/^struct keyval {$/;"	s
+main	cmd.c	/^main(int argc, char *argv[])$/;"	f
+main	cmd_new.c	/^main(int argc, char *argv[])$/;"	f
+main	test_readstr.c	/^main()$/;"	f
+main	web_server.c	/^main(int argc, char *argv[])$/;"	f
+merge_str	servfunc.c	/^merge_str(const char *name, const char *val)$/;"	f
+method	servweb.h	/^	char *method;$/;"	m	struct:request_line
+mime	initconf.c	/^struct set_keyval conf, state, mime;$/;"	v	typeref:struct:
+my_read	readstr.c	/^my_read(int fd, char *ptr)$/;"	f	file:
+pass_file	servconn.c	/^pass_file(int connfd, int resourse)$/;"	f
+pass_resp_headers	servconn.c	/^pass_resp_headers(int connfd, int resourse, struct http_request *req)$/;"	f
+progname	web_server.c	/^char *progname;$/;"	v
+protocol	servweb.h	/^	char *protocol;$/;"	m	struct:request_line
+query_str	servweb.h	/^	char *query_str;$/;"	m	struct:request_line
+read_buf	readstr.c	/^static char read_buf[MAXLINE];$/;"	v	file:
+read_cnt	readstr.c	/^static int read_cnt;$/;"	v	file:
+read_conf	initconf.c	/^read_conf(int fd, struct set_keyval *ptr)$/;"	f
+read_headers	servweb.c	/^read_headers(int fd, struct set_keyval *ptr)$/;"	f
+read_ptr	readstr.c	/^static char *read_ptr;$/;"	v	file:
+readn	readstr.c	/^readn(int fd, void *vptr, size_t n)$/;"	f
+readstr	readstr.c	/^readstr(int fd, void *vptr, size_t maxlen)$/;"	f
+readstrbuf	readstr.c	/^readstrbuf(char **vptrptr)$/;"	f
+reqline	servweb.h	/^	struct request_line reqline;$/;"	m	struct:http_request	typeref:struct:http_request::request_line
+request_line	servweb.h	/^struct request_line {$/;"	s
+request_parse	servweb.c	/^request_parse(int connfd, struct http_request *req)$/;"	f
+resolve_path	servconn.c	/^char resolve_path[MAXLINE];$/;"	v
+resourse	servweb.h	/^	char *resourse;$/;"	m	struct:request_line
+send_chunk	servweb.c	/^send_chunk(int fd, int len)$/;"	f
+send_header	servweb.c	/^send_header(int fd, const char *key, const char *val)$/;"	f
+send_respline	servweb.c	/^send_respline(int fd, const char *protocol, const char *code, const char *def)$/;"	f
+service_cgi	servcgi.c	/^service_cgi(int connfd, struct http_request *req)$/;"	f
+service_connect	servconn.c	/^service_connect(int connfd) $/;"	f
+set_default_conf	initconf.c	/^set_default_conf(int fflag)$/;"	f
+set_keyval	keyval.h	/^struct set_keyval {$/;"	s
+sig_chld	servfunc.c	/^sig_chld(int signo)$/;"	f
+state	initconf.c	/^struct set_keyval conf, state, mime;$/;"	v	typeref:struct:
+status_code	servweb.h	/^	char *status_code;$/;"	m	struct:request_line
+value	keyval.h	/^	char *value;$/;"	m	struct:keyval
+writen	readstr.c	/^writen(int fd, const void *vptr, size_t n)$/;"	f
