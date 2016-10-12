@@ -16,7 +16,7 @@ enum {
 	LEN_FILE_SIZE 		= 16
 };
 
-// request_parse() - функция разбирает стартовую строку и заголовки http-запроса по полям  
+// request_parse() - функция разбирает стартовую строку на составляющие    
 int
 request_parse(int connfd, struct http_request *req)
 {
@@ -105,6 +105,7 @@ request_parse(int connfd, struct http_request *req)
 	return 0;
 }
 
+// read_header() - функция считывает заголовки http-запроса и присваивает их элементам структуры set_keyval
 int
 read_headers(int fd, struct set_keyval *ptr)
 {
@@ -133,6 +134,7 @@ read_headers(int fd, struct set_keyval *ptr)
 	return 0;
 }
 
+// clear_request() - функция освобождает динамическую память выделенную для полей структуры http_request
 int
 clear_request(struct http_request *req)
 {
@@ -182,6 +184,7 @@ clear_request(struct http_request *req)
 	return 0;
 }
 
+// check_method () - функция проверяет соответствие метода в запросе, с доступным на сервере
 int
 check_method(char *ptr)
 {
@@ -199,6 +202,7 @@ check_method(char *ptr)
 	return -1;
 }
 
+// filesise() - функция возвращает размер resourse:w
 char * 
 filesize(int resourse, char *ptr, int len)
 {
@@ -209,6 +213,7 @@ filesize(int resourse, char *ptr, int len)
 	return ptr;
 }
 
+// pass_file() - функция записывает в дескриптор connfd, файл resourse, используя системные вызов sendfile 
 int 
 pass_file(int connfd, int resourse)
 {
@@ -221,6 +226,7 @@ pass_file(int connfd, int resourse)
 	return 0;
 }
 
+// get_date() - функция возвращает строку даты для часового пояса GMT(UTC+0)
 char *
 get_date(char *ptr, int len) 
 {
@@ -233,6 +239,7 @@ get_date(char *ptr, int len)
 	return ptr;
 }
 
+// send_respline() - функция записывает стартовую строку ответа в дескриптор fd
 int 
 send_respline(int fd, const char *protocol, const char *code, const char *def)
 {
@@ -246,6 +253,7 @@ send_respline(int fd, const char *protocol, const char *code, const char *def)
 	return 0;
 }
 
+// send_header() - функция записывает http-заголовок в дескриптор fd
 int
 send_header(int fd, const char *key, const char *val)
 {
@@ -259,6 +267,7 @@ send_header(int fd, const char *key, const char *val)
 	return 0;
 }
 
+// send_chunk() - функция записывает размер чанка len в дескриптор fd 
 int
 send_chunk(int fd, int len)
 {
