@@ -34,7 +34,7 @@ service_cgi(int connfd, struct http_request *req)
 	int pfd1[2], pfd2[2], timeout, len, recv, i, rp;
 	char buf1[MAXLINE] = {0};
 	char buf2[MAXLINE] = {0};
-	char *temp_ptr;
+	char *temp_ptr, *stattemp, *statcode, *statdef;
 	int temp_len = 0, err = 0;
 	char *argv[] = {req->reqline.file_name, NULL};
 	char *envp[21] = {NULL};
@@ -145,21 +145,31 @@ service_cgi(int connfd, struct http_request *req)
 					fprintf(stderr, "CGI-server: pipe is ready to reading\n");
 					
 					// Читаем из трубы заголовки, которые записал cgi-скрипт. 
-					// Необходимо также научиться рассматривать случаи когда скрипт шлет заголовки Status и Location (пока только Content-type)
+					// Необходимо также рассмотреть случай когда скрипт шлет заголовки Location
 					if (read_headers(pfd2[0], &cgi_headers) < 0) {
 						err = 1;
 						goto exitcgi;					
 					}
-
 					fprintf(stderr, "CGI-server: cgi-headers have been read\n");					
+
 					// Записываем в сокет стартовую строку и заголовки ответа 
-					send_respline(connfd, get_value(conf, PROTOCOL), "200", "OK");
+					if ( (stattemp = get_value(cgi_headers, "Status:")) != NULL) {
+						statcode = strsep(&stattemp, " ");
+						statdef = stattemp;
+						send_respline(connfd, get_value(conf, PROTOCOL), statcode, statdef);
+					}	
+					else 
+						send_respline(connfd, get_value(conf, PROTOCOL), "200", "OK");
+					
 					send_header(connfd, TAG_SERVNAME, get_value(conf, TAG_SERVNAME));
 					send_header(connfd, TAG_CONNECTION, get_value(conf, TAG_CONNECTION));
 					send_header(connfd, "Accept-Ranges:", "bytes");
 					send_header(connfd, "Transfer-Encoding:", "chunked");	
-					for (i = 0; i < cgi_headers.ind_cur; ++i)
+					for (i = 0; i < cgi_headers.ind_cur; ++i) {
+						if (strcmp(cgi_headers.element[i].key, "Status:") == 0)
+							continue;
 						send_header(connfd, cgi_headers.element[i].key, cgi_headers.element[i].value);
+					}
 					write(connfd, "\r\n", 2);
 					
 					// Проверяем буфер функции readstr на наличие оставшихся байт. Если есть записываем в pipe
@@ -170,6 +180,16 @@ service_cgi(int connfd, struct http_request *req)
 						clearstrbuf(); 	
 					}	
 				
+					// Пока в трубе есть данные записываем их в сокет определенными порциями
+					while ( (recv = readn(pfd2[0], buf2, MAXLINE)) > 0) {
+						send_chunk(connfd, recv);
+						fprintf(stderr, "CGI-server: chunk size of %d writen to the socket\n", writen(connfd, buf2, recv));
+						write(connfd, "\r\n", 2);	
+					}
+					
+					// Завершающий кусок нулевой длины 
+					send_chunk(connfd, 0);
+					write(connfd, "\r\n", 2);
 				/*
 					Вариант с ioctl(pfd2[0], FIONREAD, &len) и вызовом splice работает некорректно (ioctl при повторном вызовы иногда записывает в len 0)
 					// Проверяем наличие данных непосредственно в буфере pipe
@@ -184,18 +204,7 @@ service_cgi(int connfd, struct http_request *req)
 						if (ioctl(pfd2[0], FIONREAD, &len) == 0) 
 							fprintf(stderr, "Сервер-cgi: количество байт доступных в трубе = %d\n", len);
 					}
-				*/
-					// Пока в трубе есть данные записываем их в сокет определенными порциями
-					while ( (recv = readn(pfd2[0], buf2, MAXLINE)) > 0) {
-						send_chunk(connfd, recv);
-						fprintf(stderr, "CGI-server: chunk size of %d writen to the socket\n", writen(connfd, buf2, recv));
-						write(connfd, "\r\n", 2);	
-					}
-					
-					// Завершающий кусок нулевой длины 
-					send_chunk(connfd, 0);
-					write(connfd, "\r\n", 2);
-					
+				*/	
 					goto exitcgi;
 				}
 			}
