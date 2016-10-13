@@ -1,1 +1,1 @@
-gcc cmd.c readstr.c -o www/cgi-bin/cmd.cgi
+gcc cmd.c -o www/cgi-bin/cmd_output.cgi

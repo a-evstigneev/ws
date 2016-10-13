@@ -105,7 +105,7 @@ request_parse(int connfd, struct http_request *req)
 	return 0;
 }
 
-// read_header() - функция считывает заголовки http-запроса и присваивает их элементам структуры set_keyval
+// read_header() - функция считывает заголовки http-запроса и заносит их в динамический массив ptr
 int
 read_headers(int fd, struct set_keyval *ptr)
 {
@@ -116,6 +116,7 @@ read_headers(int fd, struct set_keyval *ptr)
 	
 	while ( (len = readstr(fd, bufpipe, MAXLINE)) != 0) {
 		buf = bufpipe;
+		
 		// Если прочитали строку отделяющую заголовки от тела запроса, то выходим из цикла
 		if (strcmp(buf, "\r\n") == 0)
 			break;
@@ -248,7 +249,8 @@ send_respline(int fd, const char *protocol, const char *code, const char *def)
 
 	len = strlen(protocol) + strlen(code) + strlen(def) + 5;
 	snprintf(temp_respline, len, "%s %s %s\r\n", protocol, code, def);
-	write(fd, temp_respline, len - 1);*/
+	write(fd, temp_respline, len - 1);
+*/
 	dprintf(fd, "%s %s %s\r\n", protocol, code, def);
 	return 0;
 }
@@ -262,7 +264,8 @@ send_header(int fd, const char *key, const char *val)
 	
 	len = strlen(key) + strlen(val) + 4;
 	snprintf(temp_header, len, "%s %s\r\n", key, val);
-	write(fd, temp_header, len - 1);*/
+	write(fd, temp_header, len - 1);
+*/
 	dprintf(fd, "%s %s\r\n", key, val);
 	return 0;
 }

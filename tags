@@ -6,26 +6,25 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 BUF_SIZE	cmd_new.c	5;"	d	file:
 DEF_MIME	initconf.h	6;"	d
-GROWMP	keyval.c	/^	GROWMP = 2$/;"	e	enum:__anon5	file:
-GROWMP	servfunc.c	/^	GROWMP = 2,$/;"	e	enum:__anon4	file:
+GROWMP	keyval.c	/^	GROWMP = 2$/;"	e	enum:__anon4	file:
+GROWMP	servfunc.c	/^	GROWMP = 2,$/;"	e	enum:__anon3	file:
 INITCONF_H	initconf.h	2;"	d
-INITMP	keyval.c	/^	INITMP = 1,$/;"	e	enum:__anon5	file:
-INITMP	servfunc.c	/^	INITMP = 1,$/;"	e	enum:__anon4	file:
+INITMP	keyval.c	/^	INITMP = 1,$/;"	e	enum:__anon4	file:
+INITMP	servfunc.c	/^	INITMP = 1,$/;"	e	enum:__anon3	file:
 KEYVAL_H	keyval.h	2;"	d
 LEN_DATE	servconn.c	/^	LEN_DATE		= 64,$/;"	e	enum:__anon2	file:
 LEN_FILE_SIZE	servconn.c	/^	LEN_FILE_SIZE 	= 16$/;"	e	enum:__anon2	file:
-LEN_FILE_SIZE	servweb.c	/^	LEN_FILE_SIZE 		= 16$/;"	e	enum:__anon7	file:
-LISTENQ	web_server.c	/^	LISTENQ = 20,$/;"	e	enum:__anon9	file:
-MAXLINE	cmd.c	/^	MAXLINE = 8192	$/;"	e	enum:__anon3	file:
-MAXLINE	initconf.c	/^	MAXLINE = 8192$/;"	e	enum:__anon10	file:
-MAXLINE	readstr.c	/^	MAXLINE = 8192$/;"	e	enum:__anon6	file:
-MAXLINE	servcgi.c	/^	MAXLINE = 8192$/;"	e	enum:__anon8	file:
+LEN_FILE_SIZE	servweb.c	/^	LEN_FILE_SIZE 		= 16$/;"	e	enum:__anon5	file:
+LISTENQ	web_server.c	/^	LISTENQ = 20,$/;"	e	enum:__anon8	file:
+MAXLINE	cmd.c	/^	MAXLINE = 8192	$/;"	e	enum:__anon6	file:
+MAXLINE	initconf.c	/^	MAXLINE = 8192$/;"	e	enum:__anon7	file:
+MAXLINE	readstr.c	/^	MAXLINE = 8192$/;"	e	enum:__anon9	file:
+MAXLINE	servcgi.c	/^	MAXLINE = 8192$/;"	e	enum:__anon1	file:
 MAXLINE	servconn.c	/^	MAXLINE			= 8192,$/;"	e	enum:__anon2	file:
-MAXLINE	servweb.c	/^	MAXLINE				= 8192,$/;"	e	enum:__anon7	file:
-MAXLINE	test_readstr.c	/^	MAXLINE = 8192$/;"	e	enum:__anon1	file:
-MAXSIZE	web_server.c	/^	MAXSIZE = 8192$/;"	e	enum:__anon9	file:
-MAX_LINE_SIZE	servfunc.c	/^	MAX_LINE_SIZE = 2048$/;"	e	enum:__anon4	file:
-MAX_REQUEST_LINE	servweb.c	/^	MAX_REQUEST_LINE	= 8000,$/;"	e	enum:__anon7	file:
+MAXLINE	servweb.c	/^	MAXLINE				= 8192,$/;"	e	enum:__anon5	file:
+MAXSIZE	web_server.c	/^	MAXSIZE = 8192$/;"	e	enum:__anon8	file:
+MAX_LINE_SIZE	servfunc.c	/^	MAX_LINE_SIZE = 2048$/;"	e	enum:__anon3	file:
+MAX_REQUEST_LINE	servweb.c	/^	MAX_REQUEST_LINE	= 8000,$/;"	e	enum:__anon5	file:
 NAME_CONFIG	initconf.h	4;"	d
 PROTOCOL	initconf.h	5;"	d
 READSTR_H	readstr.h	2;"	d
@@ -75,13 +74,12 @@ key	keyval.h	/^	char *key;$/;"	m	struct:keyval
 keyval	keyval.h	/^struct keyval {$/;"	s
 main	cmd.c	/^main(int argc, char *argv[])$/;"	f
 main	cmd_new.c	/^main(int argc, char *argv[])$/;"	f
-main	test_readstr.c	/^main()$/;"	f
 main	web_server.c	/^main(int argc, char *argv[])$/;"	f
 merge_str	servfunc.c	/^merge_str(const char *name, const char *val)$/;"	f
 method	servweb.h	/^	char *method;$/;"	m	struct:request_line
 mime	initconf.c	/^struct set_keyval conf, state, mime;$/;"	v	typeref:struct:
 my_read	readstr.c	/^my_read(int fd, char *ptr)$/;"	f	file:
-pass_file	servconn.c	/^pass_file(int connfd, int resourse)$/;"	f
+pass_file	servweb.c	/^pass_file(int connfd, int resourse)$/;"	f
 pass_resp_headers	servconn.c	/^pass_resp_headers(int connfd, int resourse, struct http_request *req)$/;"	f
 progname	web_server.c	/^char *progname;$/;"	v
 protocol	servweb.h	/^	char *protocol;$/;"	m	struct:request_line
@@ -106,6 +104,7 @@ service_cgi	servcgi.c	/^service_cgi(int connfd, struct http_request *req)$/;"	f
 service_connect	servconn.c	/^service_connect(int connfd) $/;"	f
 set_default_conf	initconf.c	/^set_default_conf(int fflag)$/;"	f
 set_keyval	keyval.h	/^struct set_keyval {$/;"	s
+set_new_conf	initconf.c	/^set_new_conf(const char *confpath)$/;"	f
 sig_chld	servfunc.c	/^sig_chld(int signo)$/;"	f
 state	initconf.c	/^struct set_keyval conf, state, mime;$/;"	v	typeref:struct:
 status_code	servweb.h	/^	char *status_code;$/;"	m	struct:request_line

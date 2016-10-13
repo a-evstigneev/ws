@@ -39,6 +39,7 @@ struct keyval defmime[] = {
 
 struct keyval defstate[] = {
 	"200", "OK",
+	"400", "Bad Request",
 	"403", "Forbidden",
 	"404", "Not Found",
 	"414", "Request-URI Too Large",
@@ -52,6 +53,7 @@ enum {
 
 int read_conf(int fd, struct set_keyval *ptr);
 
+// set_default_conf() - функция инициализирует массив настроек по умолчанию
 int
 set_default_conf(int fflag)
 {
@@ -80,7 +82,7 @@ set_default_conf(int fflag)
 		}
 	}
 	
-	// Если новый конфиг не задан, пробуем прочитать конфиг по умолчанию из текущего каталога
+	// Если новый конфиг не задан, пробуем читать конфиг по умолчанию из текущего каталога
 	if (fflag == 0) {
 		if ( (cfg = open(NAME_CONFIG, O_RDONLY)) < 0 ) {
 			perror("It wasn't succeeded to open a default config file");
@@ -96,10 +98,10 @@ set_default_conf(int fflag)
 			fprintf(stdout, "%s: will use default configuration file %s\n", progname, NAME_CONFIG);
 		}
 	}	
-	
 	return 0;
 }
 
+// set_new_conf() - инициализурует массив настроек из нового конфигурационного файла
 int
 set_new_conf(const char *confpath)
 {
@@ -120,10 +122,10 @@ set_new_conf(const char *confpath)
 			fprintf(stdout, "The new configuration file is successfully read\n");
 		}
 	}		
-	
 	return 0;
 }
 
+// read_conf() - функция читает конфигурационный файл и заносит строки вида "ключ-значение" в массив ptr
 int
 read_conf(int fd, struct set_keyval *ptr)
 {

@@ -33,7 +33,7 @@ char resolve_path[MAXLINE];
 int exec_response(int connfd, struct http_request *req);
 int	pass_resp_headers(int connfd, int resourse, struct http_request *req);
 
-// service_connect() - функция для обслуживания входящего http-соединения
+// service_connect() - функция для обработки http-запроса и записи http-ответа в сокет
 int 
 service_connect(int connfd) 
 {
@@ -66,7 +66,7 @@ service_connect(int connfd)
 			if (request_parse(connfd, &request) < 0) 
 				perror("request_parse error");
 			
-			exec_response(connfd, &request);				;
+			exec_response(connfd, &request);				
 			
 			clear_request(&request);
 			
